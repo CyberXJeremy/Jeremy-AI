@@ -1,39 +1,23 @@
-<div align="center">
+# Jeremy AI
 
-# Solana Agent Kit
+An open-source toolkit for connecting AI agents to Solana protocols. This project is inspired by the Solana Agent Kit and aims to provide similar functionalities.
 
-</div>
+## Core Blockchain Features
 
-![Solana Agent Kit Cover 1 (3)](https://github.com/user-attachments/assets/cfa380f6-79d9-474d-9852-3e1976c6de70)
-
-An open-source toolkit for connecting AI agents to Solana protocols. Now, any agent, using any model can autonomously perform 15+ Solana actions:
-
-- Trade tokens
-- Launch new tokens
-- Lend assets
-- Send compressed airdrops
-- Execute blinks
-- Launch tokens on AMMs
-- And more...
-
-Anyone - whether an SF-based AI researcher or a crypto-native builder - can bring their AI agents trained with any model and seamlessly integrate with Solana.
-
-## 🔧 Core Blockchain Features
-
-- **Token Operations**
+- Token Operations
   - Deploy SPL tokens by Metaplex
   - Transfer assets
   - Balance checks
   - Stake SOL
   - Zk compressed Airdrop by Light Protocol and Helius
 
-- **NFT Management via Metaplex**
+- NFT Management via Metaplex
   - Collection deployment
   - NFT minting
   - Metadata management
   - Royalty configuration
 
-- **DeFi Integration**
+- DeFi Integration
   - Jupiter Exchange swaps
   - Launch on Pump via PumpPortal
   - Raydium pool creation (CPMM, CLMM, AMMv4)
@@ -43,59 +27,54 @@ Anyone - whether an SF-based AI researcher or a crypto-native builder - can brin
   - Register and Resolve SNS
   - Jito Bundles
 
-- **Solana Blinks**
+- Solana Blinks
    - Lending by Lulo
    - Send Arcade Games
    - JupSOL staking
 
+## AI Integration Features
 
-## 🤖 AI Integration Features
-
-- **LangChain Integration**
+- LangChain Integration
   - Ready-to-use LangChain tools for blockchain operations
   - Autonomous agent support with React framework
   - Memory management for persistent interactions
   - Streaming responses for real-time feedback
 
-- **Autonomous Modes**
+- Autonomous Modes
   - Interactive chat mode for guided operations
   - Autonomous mode for independent agent actions
   - Configurable action intervals
   - Built-in error handling and recovery
 
-- **AI Tools**
+- AI Tools
   - DALL-E integration for NFT artwork generation
   - Natural language processing for blockchain commands
   - Price feed integration for market analysis
   - Automated decision-making capabilities
 
-## 📦 Installation
+## Installation
 
 ```bash
-npm install solana-agent-kit
-```
+npm install jeremy-ai
 
-## Quick Start
+Quick Start
 
-```typescript
-import { SolanaAgentKit, createSolanaTools } from "solana-agent-kit";
+import { JeremyAI, createJeremyTools } from "jeremy-ai";
 
 // Initialize with private key and optional RPC URL
-const agent = new SolanaAgentKit(
+const agent = new JeremyAI(
   "your-wallet-private-key-as-base58",
   "https://api.mainnet-beta.solana.com",
   "your-openai-api-key"
 );
 
 // Create LangChain tools
-const tools = createSolanaTools(agent);
-```
+const tools = createJeremyTools(agent);
 
-## Usage Examples
+Usage Examples
 
-### Deploy a New Token
+Deploy a New Token
 
-```typescript
 const result = await agent.deployToken(
   "my ai token", // name
   "uri", // uri
@@ -105,11 +84,9 @@ const result = await agent.deployToken(
 );
 
 console.log("Token Mint Address:", result.mint.toString());
-```
 
-### Create NFT Collection
+Create NFT Collection
 
-```typescript
 const collection = await agent.deployCollection({
   name: "My NFT Collection",
   uri: "https://arweave.net/metadata.json",
@@ -121,11 +98,9 @@ const collection = await agent.deployCollection({
     },
   ],
 });
-```
 
-### Swap Tokens
+Swap Tokens
 
-```typescript
 import { PublicKey } from "@solana/web3.js";
 
 const signature = await agent.trade(
@@ -134,29 +109,23 @@ const signature = await agent.trade(
   new PublicKey("source-token-mint"),
   300 // 3% slippage
 );
-```
 
-### Lend Tokens
+Lend Tokens
 
-```typescript
 import { PublicKey } from "@solana/web3.js";
 
 const signature = await agent.lendAssets(
   100 // amount of USDC to lend
 );
-```
 
-### Stake SOL
+Stake SOL
 
-```typescript
 const signature = await agent.stake(
   1 // amount in SOL to stake
 );
-```
 
-### Send an SPL Token Airdrop via ZK Compression
+Send an SPL Token Airdrop via ZK Compression
 
-```typescript
 import { PublicKey } from "@solana/web3.js";
 
 (async () => {
@@ -178,12 +147,10 @@ import { PublicKey } from "@solana/web3.js";
     30_000 // priority fee in lamports
   );
 })();
-```
 
-### Fetch Price Data from Pyth
+Fetch Price Data from Pyth
 
-```typescript
-import { pythFetchPrice } from "solana-agent-kit";
+import { pythFetchPrice } from "jeremy-ai";
 
 const price = await pythFetchPrice(
   agent,
@@ -191,74 +158,57 @@ const price = await pythFetchPrice(
 );
 
 console.log("Price in BTC/USD:", price);
-```
 
-## API Reference
-
-### Core Functions
-
-#### `deploy_token(agent, decimals?, name, uri, symbol, initialSupply?)`
-
+API Reference
+Core Functions
+deploy_token(agent, decimals?, name, uri, symbol, initialSupply?)
 Deploy a new SPL token with optional initial supply. If not specified, decimals default to 9.
 
-#### `deploy_collection(agent, options)`
-
+deploy_collection(agent, options)
 Create a new NFT collection with customizable metadata and royalties.
 
-#### `mintCollectionNFT(agent, collectionMint, metadata, recipient?)`
-
+mintCollectionNFT(agent, collectionMint, metadata, recipient?)
 Mint a new NFT as part of an existing collection.
 
-#### `transfer(agent, to, amount, mint?)`
-
+transfer(agent, to, amount, mint?)
 Transfer SOL or SPL tokens to a recipient.
 
-#### `trade(agent, outputMint, inputAmount, inputMint?, slippageBps?)`
-
+trade(agent, outputMint, inputAmount, inputMint?, slippageBps?)
 Swap tokens using Jupiter Exchange integration.
 
-#### `get_balance(agent, token_address)`
-
+get_balance(agent, token_address)
 Check SOL or token balance for the agent's wallet.
 
-#### `lendAsset(agent, assetMint, amount, apiKey)`
-
+lendAsset(agent, assetMint, amount, apiKey)
 Lend idle assets to earn interest with Lulo.
 
-#### `stakeWithJup(agent, amount)`
-
+stakeWithJup(agent, amount)
 Stake SOL with Jupiter to earn rewards.
 
-#### `sendCompressedAirdrop(agent, mintAddress, amount, recipients, priorityFeeInLamports?, shouldLog?)`
-
+sendCompressedAirdrop(agent, mintAddress, amount, recipients, priorityFeeInLamports?, shouldLog?)
 Send an SPL token airdrop to many recipients at low cost via ZK Compression.
 
-#### `pythFetchPrice(agent, priceFeedID)`
-
+pythFetchPrice(agent, priceFeedID)
 Fetch price data from Pyth's Hermes service.
 
-## Dependencies
-
+Dependencies
 The toolkit relies on several key Solana and Metaplex libraries:
 
-- @solana/web3.js
-- @solana/spl-token
-- @metaplex-foundation/mpl-token-metadata
-- @metaplex-foundation/mpl-core
-- @metaplex-foundation/umi
-- @lightprotocol/compressed-token
-- @lightprotocol/stateless.js
-- @pythnetwork/price-service-client
-
-## Contributing
-
+@solana/web3.js
+@solana/spl-token
+@metaplex-foundation/mpl-token-metadata
+@metaplex-foundation/mpl-core
+@metaplex-foundation/umi
+@lightprotocol/compressed-token
+@lightprotocol/stateless.js
+@pythnetwork/price-service-client
+Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute to this project.
+Refer to CONTRIBUTING.md for detailed guidelines on how to contribute to this project.
 
-## License
-
+License
 MIT License
 
-## Security
-
+Security
 This toolkit handles private keys and transactions. Always ensure you're using it in a secure environment and never share your private keys.
+
