@@ -1,6 +1,6 @@
-# Jeremy AI
-#CA:Soon
-An open-source toolkit for connecting AI agents to Solana protocols. This project is inspired by the Solana Agent Kit and aims to provide similar functionalities.
+# Jeremy AI CA: SOON
+
+An Algorithmic entity for connecting AI agents to Solana protocols. This project is manufactured in the Solana Agent Kit and aims to provide similar functionalities.
 
 ## Core Blockchain Features
 
