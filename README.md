@@ -1,4 +1,4 @@
-# Jeremy AI CA: SOON
+# Jeremy AI CA: mzpo2uWEbRWJxMAg1r2kFqzQjofsGXAcCHoLtDqpump
 
 An Algorithmic entity for connecting AI agents to Solana protocols. This project is manufactured in the Solana Agent Kit and aims to provide similar functionalities.
 
